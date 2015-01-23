@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtTrail.Data", "ArtTrail.Data\ArtTrail.Data.csproj", "{9434965B-5B50-4938-A171-B43BED365A30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtTrail.DomainEntities", "ArtTrail.DomainEntities\ArtTrail.DomainEntities.csproj", "{1B7F3D9F-D49B-4852-8D0A-1387A2C94FDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtTrail.DomainEntities.Tests", "ArtTrail.DomainEntities.Tests\ArtTrail.DomainEntities.Tests.csproj", "{16B6870B-96FF-40F9-A819-3D8D06D1B8EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtTrail.WebApi.Tests", "ArtTrail.WebApi.Tests\ArtTrail.WebApi.Tests.csproj", "{15891C2B-5F86-43B8-95FC-3C4405F56A60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtTrail.WebApi", "ArtTrail.WebApi\ArtTrail.WebApi.csproj", "{49163101-150D-4A32-B5E5-074BAB588D77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9434965B-5B50-4938-A171-B43BED365A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9434965B-5B50-4938-A171-B43BED365A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9434965B-5B50-4938-A171-B43BED365A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9434965B-5B50-4938-A171-B43BED365A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7F3D9F-D49B-4852-8D0A-1387A2C94FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7F3D9F-D49B-4852-8D0A-1387A2C94FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7F3D9F-D49B-4852-8D0A-1387A2C94FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7F3D9F-D49B-4852-8D0A-1387A2C94FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16B6870B-96FF-40F9-A819-3D8D06D1B8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B6870B-96FF-40F9-A819-3D8D06D1B8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B6870B-96FF-40F9-A819-3D8D06D1B8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B6870B-96FF-40F9-A819-3D8D06D1B8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15891C2B-5F86-43B8-95FC-3C4405F56A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15891C2B-5F86-43B8-95FC-3C4405F56A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15891C2B-5F86-43B8-95FC-3C4405F56A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15891C2B-5F86-43B8-95FC-3C4405F56A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49163101-150D-4A32-B5E5-074BAB588D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49163101-150D-4A32-B5E5-074BAB588D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49163101-150D-4A32-B5E5-074BAB588D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49163101-150D-4A32-B5E5-074BAB588D77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
