@@ -10,44 +10,59 @@
 
     public class ArtistController : ApiController
     {
-        private readonly IArtistRepository artistRepository;
+        #region Fields
 
-        public ArtistController(IArtistRepository artistRepository)
+        private readonly IArtistRepository artistRepository;
+        private readonly ICategoryRepository categoryRepository;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        public ArtistController(IArtistRepository artistRepository, ICategoryRepository categoryRepository)
         {
             this.artistRepository = artistRepository;
+            this.categoryRepository = categoryRepository;
         }
 
-        public IEnumerable<Category> GetListOfMajorCategories()
-        {
-            return this.artistRepository.GetCategories().Where(x => x.ParentCategoryId == 0 && x.IsVenueOnlyCategory == false);
-        }
+        #endregion
 
-        public IEnumerable<Category> GetListOfSubCategories(string majorCategory)
-        {
-            var parentCategoryId = this.artistRepository.GetCategoryIdFromName(majorCategory);
-
-            return this.artistRepository.GetCategories().Where(y => y.ParentCategoryId == parentCategoryId);
-        }
-
-        public Artist GetArtistByName(string artistName)
-        {
-            return this.artistRepository.GetArtists().FirstOrDefault(x => x.ArtistName.Equals(artistName, StringComparison.OrdinalIgnoreCase));
-        }
+        #region Public Methods and Operators
 
         public Artist GetArtistById(int artistId)
         {
             return this.artistRepository.GetArtists().FirstOrDefault(x => x.ArtistId == artistId);
         }
 
-        public IEnumerable<Artist> GetArtistsInCategory(string categoryName)
+        public Artist GetArtistByName(string artistName)
         {
-            var categoryId = this.artistRepository.GetCategoryIdFromName(categoryName);
             return
                 this.artistRepository.GetArtists()
-                    .Where(
-                        artist =>
-                        artist.Categories.Any(
-                            x => x.CategoryId == categoryId));
+                    .FirstOrDefault(x => x.ArtistName.Equals(artistName, StringComparison.OrdinalIgnoreCase));
         }
+
+        public IEnumerable<Artist> GetArtistsInCategory(string categoryName)
+        {
+            var categoryId = this.categoryRepository.GetCategoryIdFromName(categoryName);
+            return
+                this.artistRepository.GetArtists()
+                    .Where(artist => artist.Categories.Any(x => x.CategoryId == categoryId));
+        }
+
+        public IEnumerable<Category> GetListOfMajorArtistCategories()
+        {
+            return
+                this.categoryRepository.GetCategories()
+                    .Where(x => x.ParentCategoryId == 0 && x.IsVenueOnlyCategory == false);
+        }
+
+        public IEnumerable<Category> GetListOfSubCategories(string majorCategory)
+        {
+            var parentCategoryId = this.categoryRepository.GetCategoryIdFromName(majorCategory);
+
+            return this.categoryRepository.GetCategories().Where(y => y.ParentCategoryId == parentCategoryId);
+        }
+
+        #endregion
     }
 }

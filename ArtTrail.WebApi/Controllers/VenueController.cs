@@ -9,11 +9,40 @@
 
     public class VenueController
     {
-        private readonly IVenueRepository venueRepository;
+        #region Fields
 
-        public VenueController(IVenueRepository venueRepository)
+        private readonly IVenueRepository venueRepository;
+        private readonly ICategoryRepository categoryRepository;
+
+        #endregion
+
+        #region Constructors and Destructors
+
+        public VenueController(IVenueRepository venueRepository, ICategoryRepository categoryRepository)
         {
             this.venueRepository = venueRepository;
+            this.categoryRepository = categoryRepository;
+        }
+
+        #endregion
+
+        #region Public Methods and Operators
+
+        public IEnumerable<Category> GetListOfMajorCategories()
+        {
+            return this.categoryRepository.GetCategories().Where(x => x.ParentCategoryId == 0 && x.IsVenueOnlyCategory);
+        }
+
+        public IEnumerable<Category> GetListOfSubCategories(string majorCategory)
+        {
+            var parentCategoryId = this.categoryRepository.GetCategoryIdFromName(majorCategory);
+
+            return this.categoryRepository.GetCategories().Where(y => y.ParentCategoryId == parentCategoryId);
+        }
+
+        public Venue GetVenueById(int expectedVenueId)
+        {
+            return this.venueRepository.GetVenues().FirstOrDefault(x => x.VenueId == expectedVenueId);
         }
 
         public Venue GetVenueByName(string expectedVenueName)
@@ -23,14 +52,18 @@
                     .FirstOrDefault(x => x.VenueName.Equals(expectedVenueName, StringComparison.OrdinalIgnoreCase));
         }
 
-        public Venue GetVenueById(int expectedVenueId)
-        {
-            return this.venueRepository.GetVenues().FirstOrDefault(x => x.VenueId == expectedVenueId);
-        }
-
         public IEnumerable<Venue> GetVenueList()
         {
-            return this.venueRepository.GetVenues();
+            return this.venueRepository.GetVenues().OrderBy(x => x.VenueName);
         }
+
+        public IEnumerable<Venue> GetVenuesInCategory(string categoryName)
+        {
+            var categoryId = this.categoryRepository.GetCategoryIdFromName(categoryName);
+            return this.venueRepository.GetVenues()
+                .Where(venue => venue.Categories.Any(x => x.CategoryId == categoryId));
+        }
+
+        #endregion
     }
 }

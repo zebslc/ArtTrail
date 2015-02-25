@@ -5,10 +5,16 @@
 
     public sealed class ArtTrailDataContextConfiguration : DbMigrationsConfiguration<ArtTrailDataContext>
     {
+        #region Constructors and Destructors
+
         public ArtTrailDataContextConfiguration()
         {
             this.SetMigrationStatus();
         }
+
+        #endregion
+
+        #region Methods
 
         protected override void Seed(ArtTrailDataContext context)
         {
@@ -22,7 +28,9 @@
         private void SetMigrationStatus()
         {
             this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = true;            
+            this.AutomaticMigrationDataLossAllowed = true;
         }
+
+        #endregion
     }
 }

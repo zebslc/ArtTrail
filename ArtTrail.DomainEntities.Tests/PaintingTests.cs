@@ -1,7 +1,5 @@
 ﻿namespace ArtTrail.DomainEntities.Tests
 {
-    using ArtTrail.DomainEntities;
-
     using Cavity;
 
     using FluentAssertions;
@@ -11,25 +9,10 @@
     [TestFixture]
     public class PaintingTests
     {
-        [Test]
-        public void PaintingShouldHaveAnId()
-        {
-            // Arrange
-            const int expectedPaintingId = 1;
-
-            // Act
-            var painting = new Painting { PaintingId = expectedPaintingId };
-
-            // Assert
-            painting.PaintingId.Should().Be(expectedPaintingId);
-
-            new PropertyExpectations<Painting>(x => x.PaintingId)
-                .IsAutoProperty<int>()
-                .Result.Should().Be(true);
-        }
+        #region Public Methods and Operators
 
         [Test]
-        public void PaintingShouldHaveAName()
+        public void PaintingObjectToStringShouldGivePaintingNameForEasyComparison()
         {
             // Arrange
             const string expectedPaintingName = "A";
@@ -38,11 +21,7 @@
             var painting = new Painting { PaintingName = expectedPaintingName };
 
             // Assert
-            painting.PaintingName.Should().Be(expectedPaintingName);
-
-            new PropertyExpectations<Painting>(x => x.PaintingName)
-                .IsAutoProperty<string>()
-                .Result.Should().Be(true);
+            painting.ToString().Should().Be(expectedPaintingName);
         }
 
         [Test]
@@ -57,10 +36,41 @@
             // Assert
             painting.PaintingDescription.Should().Be(expectedPaintingDescription);
 
-            new PropertyExpectations<Painting>(x => x.PaintingDescription)
-                .IsAutoProperty<string>()
-                .Result.Should().Be(true);
+            new PropertyExpectations<Painting>(x => x.PaintingDescription).IsAutoProperty<string>()
+                .Result.Should()
+                .Be(true);
         }
+
+        [Test]
+        public void PaintingShouldHaveAName()
+        {
+            // Arrange
+            const string expectedPaintingName = "A";
+
+            // Act
+            var painting = new Painting { PaintingName = expectedPaintingName };
+
+            // Assert
+            painting.PaintingName.Should().Be(expectedPaintingName);
+
+            new PropertyExpectations<Painting>(x => x.PaintingName).IsAutoProperty<string>().Result.Should().Be(true);
+        }
+
+        [Test]
+        public void PaintingShouldHaveAnId()
+        {
+            // Arrange
+            const int expectedPaintingId = 1;
+
+            // Act
+            var painting = new Painting { PaintingId = expectedPaintingId };
+
+            // Assert
+            painting.PaintingId.Should().Be(expectedPaintingId);
+
+            new PropertyExpectations<Painting>(x => x.PaintingId).IsAutoProperty<int>().Result.Should().Be(true);
+        }
+
         [Test]
         public void PaintingShouldHaveUrl()
         {
@@ -73,22 +83,9 @@
             // Assert
             painting.PaintingUrl.Should().Be(expectedPaintingUrl);
 
-            new PropertyExpectations<Painting>(x => x.PaintingUrl)
-                .IsAutoProperty<string>()
-                .Result.Should().Be(true);
+            new PropertyExpectations<Painting>(x => x.PaintingUrl).IsAutoProperty<string>().Result.Should().Be(true);
         }
 
-        [Test]
-        public void PaintingObjectToStringShouldGivePaintingNameForEasyComparison()
-        {
-            // Arrange
-            const string expectedPaintingName = "A";
-
-            // Act
-            var painting = new Painting { PaintingName = expectedPaintingName };
-
-            // Assert
-            painting.ToString().Should().Be(expectedPaintingName);
-        }
+        #endregion
     }
 }

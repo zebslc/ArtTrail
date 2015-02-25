@@ -51,6 +51,7 @@
     <Compile Include="ModelMapping\ArtistConfiguration.cs" />
     <Compile Include="ModelMapping\CategoryConfiguration.cs" />
     <Compile Include="ModelMapping\PaintingConfiguration.cs" />
+    <Compile Include="ModelMapping\VenueConfiguration.cs" />
     <Compile Include="Painting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Venue.cs" />

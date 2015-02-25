@@ -6,6 +6,8 @@
 
     internal static class CategorySeedHelper
     {
+        #region Public Methods and Operators
+
         [Conditional("DEBUG")]
         public static void PopulateCategories(ArtTrailDataContext dataContext)
         {
@@ -13,41 +15,43 @@
                 dataContext.Categories.Add(
                     new Category
                         {
-                            CategoryName = "MasterCatA",
-                            IsVenueOnlyCategory = false,
-                            CategoryDescription = "Master Category A",
+                            CategoryName = "MasterCatA", 
+                            IsVenueOnlyCategory = false, 
+                            CategoryDescription = "Master Category A", 
                             ParentCategoryId = 0
                         });
             dataContext.SaveChanges();
 
             dataContext.Categories.Add(
-                    new Category
-                        {
-                            CategoryName = "ChildA",
-                            CategoryDescription = "Child category A",
-                            IsVenueOnlyCategory = false,
-                            ParentCategoryId = master1.CategoryId
-                        });
+                new Category
+                    {
+                        CategoryName = "ChildA", 
+                        CategoryDescription = "Child category A", 
+                        IsVenueOnlyCategory = false, 
+                        ParentCategoryId = master1.CategoryId
+                    });
             dataContext.SaveChanges();
 
             dataContext.Categories.Add(
-                    new Category
+                new Category
                     {
-                        CategoryName = "ChildB",
-                        CategoryDescription = "Child category B",
-                        IsVenueOnlyCategory = false,
+                        CategoryName = "ChildB", 
+                        CategoryDescription = "Child category B", 
+                        IsVenueOnlyCategory = false, 
                         ParentCategoryId = master1.CategoryId
                     });
             dataContext.SaveChanges();
             dataContext.Categories.Add(
-                  new Category
-                  {
-                      CategoryName = "MasterCatB",
-                      IsVenueOnlyCategory = true,
-                      CategoryDescription = "Master Category B",
-                      ParentCategoryId = 0
-                  });
+                new Category
+                    {
+                        CategoryName = "MasterCatB", 
+                        IsVenueOnlyCategory = true, 
+                        CategoryDescription = "Master Category B", 
+                        ParentCategoryId = 0
+                    });
             dataContext.SaveChanges();
         }
+
+        #endregion
     }
 }

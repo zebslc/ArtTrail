@@ -1,7 +1,5 @@
 ﻿namespace ArtTrail.DomainEntities.Tests
 {
-    using ArtTrail.DomainEntities;
-
     using Cavity;
 
     using FluentAssertions;
@@ -11,72 +9,20 @@
     [TestFixture]
     public class CategoryTests
     {
-        [Test]
-        public void CategoryShouldHaveAnId()
-        {
-            // Arrange
-            const int expectedCategoryId = 1;
-
-            // Act
-            var category = new Category { CategoryId = expectedCategoryId };
-
-            // Assert
-            category.CategoryId.Should().Be(expectedCategoryId);
-
-            new PropertyExpectations<Category>(x => x.CategoryId)
-                .IsAutoProperty<int>()
-                .Result.Should().Be(true);
-        }
+        #region Public Methods and Operators
 
         [Test]
-        public void CategoryShouldHaveAName()
+        public void CategoryCanHaveSubCategories()
         {
             // Arrange
-            const string expectedCategoryName = "A";
+            const int expectedCategoryCount = 1;
 
             // Act
-            var category = new Category { CategoryName = expectedCategoryName };
+            var category = new Category();
+            category.AddCategory(new Category());
 
             // Assert
-            category.CategoryName.Should().Be(expectedCategoryName);
-
-            new PropertyExpectations<Category>(x => x.CategoryName)
-                .IsAutoProperty<string>()
-                .Result.Should().Be(true);
-        }
-
-        [Test]
-        public void CategoryShouldHaveADescription()
-        {
-            // Arrange
-            const string expectedCategoryDescription = "A";
-
-            // Act
-            var category = new Category { CategoryDescription = expectedCategoryDescription };
-
-            // Assert
-            category.CategoryDescription.Should().Be(expectedCategoryDescription);
-
-            new PropertyExpectations<Category>(x => x.CategoryDescription)
-                .IsAutoProperty<string>()
-                .Result.Should().Be(true);
-        }
-
-        [Test]
-        public void CategoryShouldHaveAnOptionalVenueOnlyLocation()
-        {
-            // Arrange
-            const bool expectedIsVenueOnlyCategory = true;
-
-            // Act
-            var category = new Category { IsVenueOnlyCategory = expectedIsVenueOnlyCategory };
-
-            // Assert
-            category.IsVenueOnlyCategory.Should().Be(expectedIsVenueOnlyCategory);
-
-            new PropertyExpectations<Category>(x => x.IsVenueOnlyCategory)
-                .IsAutoProperty<bool>()
-                .Result.Should().Be(true);
+            category.ChildCategories.Count.Should().Be(expectedCategoryCount);
         }
 
         [Test]
@@ -93,17 +39,69 @@
         }
 
         [Test]
-        public void CategoryCanHaveSubCategories()
+        public void CategoryShouldHaveADescription()
         {
             // Arrange
-            const int expectedCategoryCount = 1;
+            const string expectedCategoryDescription = "A";
 
             // Act
-            var category = new Category();
-            category.AddCategory(new Category());
+            var category = new Category { CategoryDescription = expectedCategoryDescription };
 
             // Assert
-            category.ChildCategories.Count.Should().Be(expectedCategoryCount);
+            category.CategoryDescription.Should().Be(expectedCategoryDescription);
+
+            new PropertyExpectations<Category>(x => x.CategoryDescription).IsAutoProperty<string>()
+                .Result.Should()
+                .Be(true);
         }
+
+        [Test]
+        public void CategoryShouldHaveAName()
+        {
+            // Arrange
+            const string expectedCategoryName = "A";
+
+            // Act
+            var category = new Category { CategoryName = expectedCategoryName };
+
+            // Assert
+            category.CategoryName.Should().Be(expectedCategoryName);
+
+            new PropertyExpectations<Category>(x => x.CategoryName).IsAutoProperty<string>().Result.Should().Be(true);
+        }
+
+        [Test]
+        public void CategoryShouldHaveAnId()
+        {
+            // Arrange
+            const int expectedCategoryId = 1;
+
+            // Act
+            var category = new Category { CategoryId = expectedCategoryId };
+
+            // Assert
+            category.CategoryId.Should().Be(expectedCategoryId);
+
+            new PropertyExpectations<Category>(x => x.CategoryId).IsAutoProperty<int>().Result.Should().Be(true);
+        }
+
+        [Test]
+        public void CategoryShouldHaveAnOptionalVenueOnlyLocation()
+        {
+            // Arrange
+            const bool expectedIsVenueOnlyCategory = true;
+
+            // Act
+            var category = new Category { IsVenueOnlyCategory = expectedIsVenueOnlyCategory };
+
+            // Assert
+            category.IsVenueOnlyCategory.Should().Be(expectedIsVenueOnlyCategory);
+
+            new PropertyExpectations<Category>(x => x.IsVenueOnlyCategory).IsAutoProperty<bool>()
+                .Result.Should()
+                .Be(true);
+        }
+
+        #endregion
     }
 }

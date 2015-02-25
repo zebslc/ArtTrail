@@ -49,6 +49,7 @@
     <Compile Include="ArtTrailDataContext.cs" />
     <Compile Include="IArtTrailDataContext.cs" />
     <Compile Include="Interfaces\IArtistRepository.cs" />
+    <Compile Include="Interfaces\ICategoryRepository.cs" />
     <Compile Include="Interfaces\IVenueRepository.cs" />
     <Compile Include="Migrations\ArtTrailDataContextConfiguration.cs" />
     <Compile Include="Migrations\ArtTrailDataContextInitialiser.cs" />
@@ -57,6 +58,8 @@
     <Compile Include="Migrations\Seeder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArtistRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\VenueRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,11 +6,22 @@ namespace ArtTrail.Data
 
     public interface IArtTrailDataContext
     {
-        IDbSet<Category> Categories { get; set; }
+        #region Public Properties
+
         IDbSet<Artist> Artists { get; set; }
+
+        IDbSet<Category> Categories { get; set; }
+
         IDbSet<Painting> Paintings { get; set; }
+
+        IDbSet<Venue> Venues { get; set; }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         void InitialiseDatabase();
 
+        #endregion
     }
 }

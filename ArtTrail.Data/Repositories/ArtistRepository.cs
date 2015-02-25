@@ -9,29 +9,28 @@
 
     public class ArtistRepository : IArtistRepository
     {
+        #region Fields
+
         private readonly IArtTrailDataContext dataContext;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         public ArtistRepository(IArtTrailDataContext dataContext)
         {
             this.dataContext = dataContext;
         }
 
-        public IEnumerable<Category> GetCategories()
-        {
-            return this.dataContext.Categories;
-        }
+        #endregion
+
+        #region Public Methods and Operators
 
         public IEnumerable<Artist> GetArtists()
         {
             return this.dataContext.Artists;
         }
 
-        public int GetCategoryIdFromName(string categoryName)
-        {
-            var categories = this.GetCategories()
-                .FirstOrDefault(x => x.CategoryName.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
-
-            return categories != null ? categories.CategoryId : 0;
-        }
+        #endregion
     }
 }

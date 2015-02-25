@@ -8,16 +8,28 @@ namespace ArtTrail.Data
 
     public class ArtTrailDataContext : DbContext, IArtTrailDataContext
     {
-        public IDbSet<Category> Categories { get; set; }
+        #region Public Properties
 
         public IDbSet<Artist> Artists { get; set; }
 
+        public IDbSet<Category> Categories { get; set; }
+
         public IDbSet<Painting> Paintings { get; set; }
+
+        public IDbSet<Venue> Venues { get; set; }
+
+        #endregion
+
+        #region Public Methods and Operators
 
         public void InitialiseDatabase()
         {
             this.Database.Initialize(true);
         }
+
+        #endregion
+
+        #region Methods
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,6 +38,10 @@ namespace ArtTrail.Data
             modelBuilder.Configurations.Add(new ArtistConfiguration());
             modelBuilder.Configurations.Add(new PaintingConfiguration());
             modelBuilder.Configurations.Add(new CategoryConfiguration());
+            modelBuilder.Configurations.Add(new VenueConfiguration());
+
         }
+
+        #endregion
     }
 }

@@ -16,34 +16,37 @@
     [TestFixture]
     public class ArtistTests
     {
-        [Test]
-        public void GetArtistByNameReturnsTheCorrectArtist()
-        {
-            // Arrange
-            const string expectedArtistName = "artist1";
-            var dataRep = new Mock<IArtistRepository>();
-            dataRep.Setup(x => x.GetArtists()).Returns(new List<Artist> { new Artist { ArtistName = expectedArtistName } });
-
-            // Act
-            var returnedArtist = new ArtistController(dataRep.Object).GetArtistByName(expectedArtistName);
-
-            // Assert
-            returnedArtist.ArtistName.Should().Be(expectedArtistName);
-        }
+        #region Public Methods and Operators
 
         [Test]
         public void GetArtistByIdReturnsTheCorrectArtist()
         {
             // Arrange
             const int expectedArtistId = 1;
-            var dataRep = new Mock<IArtistRepository>();
-            dataRep.Setup(x => x.GetArtists()).Returns(new List<Artist> { new Artist { ArtistId = expectedArtistId } });
+            var dataArtistRep = new Mock<IArtistRepository>();
+            dataArtistRep.Setup(x => x.GetArtists()).Returns(new List<Artist> { new Artist { ArtistId = expectedArtistId } });
 
             // Act
-            var returnedArtist = new ArtistController(dataRep.Object).GetArtistById(expectedArtistId);
+            var returnedArtist = new ArtistController(dataArtistRep.Object, null).GetArtistById(expectedArtistId);
 
             // Assert
             returnedArtist.ArtistId.Should().Be(expectedArtistId);
+        }
+
+        [Test]
+        public void GetArtistByNameReturnsTheCorrectArtist()
+        {
+            // Arrange
+            const string expectedArtistName = "artist1";
+            var dataArtistRep = new Mock<IArtistRepository>();
+            dataArtistRep.Setup(x => x.GetArtists())
+                .Returns(new List<Artist> { new Artist { ArtistName = expectedArtistName } });
+
+            // Act
+            var returnedArtist = new ArtistController(dataArtistRep.Object, null).GetArtistByName(expectedArtistName);
+
+            // Assert
+            returnedArtist.ArtistName.Should().Be(expectedArtistName);
         }
 
         [Test]
@@ -52,17 +55,19 @@
             // Arrange
             const int expectedPaintingCount = 1;
             const string expectedArtistName = "artist1";
-            var dataRep = new Mock<IArtistRepository>();
+            var dataArtistRep = new Mock<IArtistRepository>();
             var artist = new Artist { ArtistName = expectedArtistName };
             artist.AddPainting(new Painting { PaintingId = 1 });
-            dataRep.Setup(x => x.GetArtists()).Returns(new List<Artist> { artist });
+            dataArtistRep.Setup(x => x.GetArtists()).Returns(new List<Artist> { artist });
 
             // Act
             var paintingCount =
-                new ArtistController(dataRep.Object).GetArtistByName(expectedArtistName).Paintings.Count();
+                new ArtistController(dataArtistRep.Object, null).GetArtistByName(expectedArtistName).Paintings.Count();
 
             // Assert
             paintingCount.Should().Be(expectedPaintingCount);
         }
+
+        #endregion
     }
 }
