@@ -74,6 +74,7 @@
     <Compile Include="ArtistCategoryTests.cs" />
     <Compile Include="ArtistTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VenueTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -49,6 +49,7 @@
     <Compile Include="ArtTrailDataContext.cs" />
     <Compile Include="IArtTrailDataContext.cs" />
     <Compile Include="Interfaces\IArtistRepository.cs" />
+    <Compile Include="Interfaces\IVenueRepository.cs" />
     <Compile Include="Migrations\ArtTrailDataContextConfiguration.cs" />
     <Compile Include="Migrations\ArtTrailDataContextInitialiser.cs" />
     <Compile Include="Migrations\Helpers\ArtistSeedHelper.cs" />
