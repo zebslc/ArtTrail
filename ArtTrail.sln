@@ -13,6 +13,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtTrail.WebApi.Tests", "Ar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtTrail.WebApi", "ArtTrail.WebApi\ArtTrail.WebApi.csproj", "{49163101-150D-4A32-B5E5-074BAB588D77}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ArtTrail.Web(1)", "http://localhost:53042", "{B04C6D33-5021-4769-9B99-410BFA930782}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_53042"
+		Debug.AspNetCompiler.PhysicalPath = "ArtTrail.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53042\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_53042"
+		Release.AspNetCompiler.PhysicalPath = "ArtTrail.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53042\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "ArtTrail.Web\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +60,10 @@ Global
 		{49163101-150D-4A32-B5E5-074BAB588D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49163101-150D-4A32-B5E5-074BAB588D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49163101-150D-4A32-B5E5-074BAB588D77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B04C6D33-5021-4769-9B99-410BFA930782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B04C6D33-5021-4769-9B99-410BFA930782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B04C6D33-5021-4769-9B99-410BFA930782}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B04C6D33-5021-4769-9B99-410BFA930782}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
